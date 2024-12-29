@@ -1,0 +1,7 @@
+:root{
+    --color:rgb(60, 170, 60);
+    --gradient:linear-gradient(to bot,var(--color),whitesmoke);
+}
+body{
+    background-color: whitesmoke;
+}

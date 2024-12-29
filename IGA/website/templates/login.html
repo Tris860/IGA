@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="shortcut icon" href="../static/media/logo.png" type="image/x-icon">
+    <script src="../static/javascript/script.js" defer></script>
+    
+    <title>IGA</title>
+</head>
+<body>
+    
+    <!-- <video autoplay muted loop id="background-video">
+        <source src="../static/media/bg-video.mp4" type="video/mp4">
+      </video> -->
+      <div id="verify" class="verify">
+        <button class="hide_verifyBox" onclick="verifyBox_hide()">&times;</button>
+        <form action="/verify" method="post">
+            <h1>Verify your account</h1>
+            <div class="input-field">
+                <input type="number" name="V_code" required>
+                <label>V-Code</label>
+            </div>
+            <button type="submit">Verify</button>
+        </form>
+      </div>
+      {% with messages = get_flashed_messages(with_categories = true) %}
+      {% if messages %}
+      {% for category,message in messages %}
+      {% if category == 'error' %}
+      
+      <h1 class="error" id="Error"><button onclick="error_hide()">&times;</button> <p>{{message}}</p></h1>
+      
+      {% else %}
+      <div class="success-text">{{message}}</div>
+      <button>&times;</button>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      
+    <div class="show-popup show-signup">
+        <div class="form-box" id="login-form">
+            <div class="form-content">
+                <h2>LOG IN</h2>
+                <div class="form-details">
+                    <p>Please log in using your personal information.</p>
+                </div>
+                <form action="/login" method="post">
+                    <div class="input-field">
+                        <input type="text" name="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="passwd" required>
+                        <label>Password</label>
+                    </div>
+                    <a href="#" class="forgot-pass-link">Forgot password?</a>
+                    <button type="submit">Log In</button>
+                </form>
+                <div class="bottom-link">
+                    Don't have an account?
+                    <a href="#register-form" onclick="toggleForm()"  >Signup</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-box signup" id="register-form">
+            
+            <div class="form-content">
+                <h2>SIGN UP</h2>
+                <div class="form-details">
+                    <p>Please sign up using your personal information.</p>
+                </div>
+                <form action="/signup" method="post">
+                    <div class="input-field">
+                        <input type="username" name="username" required>
+                        <label>Enter your username</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" name="email" required>
+                        <label>Enter your email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="passwd" required>
+                        <label>Create password</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="cpasswd" required>
+                        <label>Confirm your password</label>
+                    </div>
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy">
+                        <label for="policy">
+                            I agree the
+                            <a href="#" class="option">Terms & Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <div class="bottom-link">
+                    Already have an account? 
+                    <a href="#" id="login-link" onclick="toggleForm()">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-words">
+        <img src="../static/media/logo.png" alt="" srcset="">
+        <h2>Good <span> education</span> is the <span>key</span>  to
+        <span id="typer"></span>
+    </div>
+</body>
+</html>

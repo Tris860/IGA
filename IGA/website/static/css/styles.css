@@ -1,0 +1,359 @@
+:root {
+    --main-color: rgb(64, 185, 233);
+    --text-color:black;
+    --hover-color:rgb(54,169,216);
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    color:black;
+}
+
+body {
+    height: 600px;
+    width: 100%;
+    background-color: aliceblue;;
+    backdrop-filter:-blur(10px);
+}
+.error{
+    background-color: rgba(255, 255, 255, 0.359);
+    padding:2%;
+    color:whitesmoke;
+    font-size: 1.2em;
+    border-bottom: 2px solid red;
+    /* display: none; */
+}
+.error button {
+    background-color: transparent;
+    font-size: 1.5em;
+    padding:0% 2%;
+    border: none;
+    color:red;
+    display: inline-block;
+    transition: transform ease-in-out 1s;
+}
+.error button:hover{
+    transform: scale(1.09);
+    text-shadow: 0 0 5px black;
+}
+.verify{
+    background-color:rgba(0, 0, 0, 0.327);
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    z-index: 100;
+    width:100%;
+    height: 100%;
+    /* animation: focus 2s ease-in 1s ; */
+    display: none;
+}
+.verify form{
+    margin:12% 30%;
+    padding: 2%;
+    width:40%;
+    background-color: whitesmoke;
+    height:40%;
+    box-shadow: 0 0 50px var(--hover-color);
+    border-radius: 10px;
+    border: 1px solid var(--main-color);
+}
+.verify form h1{
+    text-align: center;
+    color:var(--main-color);
+}
+.verify .hide_verifyBox{
+    color:var(--hover-color);
+    font-size: 2em;
+    border: none;
+    background-color: transparent;
+    padding:0 2%;
+}
+
+@keyframes moveup {
+    from{
+        transform: translateY(0%);
+    }
+    to{
+        transform: translatey(-100%);
+        
+    }
+    
+}
+.error p{
+    display: inline-block;
+}
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+  }
+
+.form-box{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 0px 50px rgb(15, 69, 179,0.3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 30%;
+    margin-top: 8%;
+    margin-left: 6%;
+}
+
+
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    max-width: 720px;
+    background: #fff;
+    border: 2px solid #fff;
+    transform: translate(-50%, -70%);
+}
+
+.show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.1s;
+}
+
+.form-popup .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #878484;
+    cursor: pointer;
+}
+
+.form-popup .form-box {
+    display: flex;
+}
+
+.form-box .form-details {
+    width: 100%;
+    color: #fff;
+    padding: 1%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-details p{
+    margin-top: -5%;
+}
+
+.form-box .form-content h2{
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.form-box .form-content {
+    width: 100%;
+    padding: 35px;
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 29px;
+}
+
+
+
+form .input-field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-field input {
+    height: 100%;
+    width: 100%;
+    background: none;
+    outline: none;
+    font-size: 0.95rem;
+    padding: 0 15px;
+    border: 1px solid #717171;
+    border-radius: 3px;
+}
+
+.input-field input:focus {
+    border: 1px solid var(--main-color);
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--main-color);
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+    padding: 16px 15px 0;
+}
+
+.input-field input:is(:focus, :valid)~label {
+    transform: translateY(-120%);
+    color: var(--main-color);
+    font-size: 0.75rem;
+}
+
+.form-box a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.form-box a:hover {
+    text-decoration: underline;
+}
+
+form :where(.forgot-pass-link, .policy-text) {
+    display: inline-flex;
+    margin-top: 13px;
+    font-size: 0.95rem;
+}
+
+form button {
+    width: 100%;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 25px 0;
+    background: var(--main-color);
+    transition: 0.2s ease;
+}
+
+form button:hover {
+    background: var(--hover-color);
+}
+
+.form-content .bottom-link {
+    text-align: center;
+}
+
+.show-signup .signup {
+    display: none;
+}
+
+.signup .policy-text {
+    display: flex;
+    margin-top: 14px;
+    align-items: center;
+}
+
+.signup .policy-text input {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+
+
+@media (max-width: 760px) {
+    .form-box .form-details {
+        display: none;
+    }
+
+    .form-box .form-content {
+        padding: 30px 20px;
+    }
+}
+
+
+.hero-words{
+    /* background-color: blue; */
+    width: 38%;
+    height: 450px;
+    position: relative;
+    margin-left: 50%;
+    margin-top: -40%;
+    font-size: 20px;
+    line-height: 90px;
+}
+.hero-words img{
+    height:50%;
+    margin:2% 25%;
+    width:50%;
+    align-content: center;
+    /* background-color: black; */
+}
+
+.hero-words h2{
+    margin-top:-10%;
+    padding: 0%;
+    font-size:1.2em;
+    font-weight: bold;
+    text-align: center;
+    /* background-color: aqua; */
+}
+.hero-words h3{
+    font-size: 40px;
+    font-weight: bold;
+}
+.hero-words h4{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.hero-words h1 {
+    color: var(--main-color);
+    font-size: 3rem;
+    font-weight: bold;
+}
+.hero-words h2 span {
+    color: var(--main-color);
+    position: relative;
+
+}
+
+.hero-words h1 span::before {
+    content: "";
+    height: 60px;
+    width: 2px;
+    position: absolute;
+    top: 50%;
+    right: -8px;
+    background: var(--main-color);
+    transform: translateY(-45%);
+    animation: blink 0.7s infinite;
+}
+
+.hero-words h1 span.stop-blinking::before {
+    animation: none;
+}
+
+@keyframes blink {
+    50% { opacity: 0 }
+}
+@keyframes focus{
+    from{
+        opacity: 0;
+        backdrop-filter:blur(10px);
+    }
+    to{
+        opacity: 1;
+        backdrop-filter:blur(0px);
+    }
+}

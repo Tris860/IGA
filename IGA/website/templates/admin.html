@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/admin.css">
+    <link rel="shortcut icon" href="../static/media/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+    <title>IGA | Admin</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar"></nav>
+        <div class="input-box">
+            <i class="uil uil-search" style="color: #333; font-size: 20px;"></i>
+            <input type="text" onkeyup="Search()" placeholder="Search here..." id="searchbar"/>
+            <button class="button">Search</button>
+        </div>
+        <div class="profile">
+            
+            <div id="profilepic">
+                <a href="#proinfo" onclick="toggleForm()">
+                    <img src="../static/media/profile.png" alt="Profile"  id="#profileinfo">
+                </a>
+            </div>
+            <div class="myinfo"><p onclick="toggleForm()" id="myinfo"></p></div>
+        </div>
+    </header> 
+    <div class="container" >
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <hr>
+            <ul>
+                <li><a href="#" class="panel" onclick="showDiv('content',0)">Requests</a></li>
+                <li><a href="#" class="panel inactive" onclick="showDiv('content2',1)">Contents</a></li>
+                <li><a href="#" class="panel inactive" onclick="showDiv('content3',2)">Users</a></li>
+            </ul>
+            <div id="message_box">
+                <h3></h3>
+            </div>
+        </div>
+        <div id="content" class="content box"> 
+            <div class="notification-inbox" id="notification-zone">
+                <h2>Requests</h2><hr>
+                <table cellspacing="0" id="request_table" class="table"></table>
+            </div>
+        </div>
+        <div id="content2" class="box hidden">
+            <div class="notification-inbox" id="notification-zone">
+                <h2>Contents</h2><hr>
+                <table cellspacing="0" id="request_table2" class="table unsearchable"></table>
+            </div>
+        </div>
+        <div id="content3" class="box hidden">
+            <div class="notification-inbox" id="notification-zone">
+                <h2>Users</h2><hr>
+                <table cellspacing="0" id="request_table3" class="table unsearchable"></table>
+            </div>
+        </div>
+    </div>
+    <div class="popups" id="popups" >
+        <button  class="hide" onclick="toggleForm()">&times;</button>
+        <div id="proinfo" class="div-to-hide" >
+            <a onclick="toggleForms(1)" class="probutton"><div class="prolinks">Settings & privacy</div></a>
+            <a onclick="toggleForms(2)" class="probutton"><div class="prolinks">Help & Support</div></a>
+            <button id="logout" ><div><img src="../static/media/logout.png" alt=""><h4><a href="/logout">Logout</a></h4></div></button>
+            <div class="profooter">&copy; <span id="currentYear"></span> IGA. All rights reserved.</div>
+        </div>
+        <div id="Settings" class="div-to-hide" >
+            <div class="arrow_back" id="left-arrow" onclick="toggleForms(0)">&#8592;</div>
+            <h2>Settings</h2>
+            <hr>
+            <div class="setting_menu">
+                <h3>Menu</h3>
+                <hr>
+                <ul>
+                    <li>About me</li>
+                    <li>Change Credentials</li>
+                </ul>
+                <div class="message_credential" id="message_credential"></div>
+            </div>
+            <div class="me" id="Myaccount_info">
+                <h3>My account details</h3>
+                <div class="details">
+                    <p>Email</p>
+                    <p>Username</p>
+                    <p>Account type</p>
+                    <p>Password</p>
+                </div>
+                <div class="details_data" id="details_data">
+                    <p id="user_email" onclick="change('email','{{user.email}}')">{{user.email}}</p>
+                    <p onclick="change('username','{{user.username}}')">{{user.username}}</p>
+                    <p>{{user.account_type}}</p>
+                    <p><button onclick="change('password',null)">Change</button></p>
+                </div>
+                <div class="posts">
+                    <div class="files_posted" id="files_posted_container" >
+                        <h3>Posts</h3>
+                        <hr>
+                        <div id="files_posted"></div>
+                    </div>
+                    <div class="form_change" id="form_change">
+                        <h3 id="form_change_title"><button id="cancel" onclick="close_change_form()">&times;</button> Change the <span id="field"></span></h3>
+                        <hr>
+                        <div class="form">
+                            <div class="input-field">
+                                <input id="field_value" type="text" name="field_value" required>
+                                <input id="nameField" type="text" name="field" required style="display: none;">
+                                <label id="field_name"></label>
+                            </div>
+                            <div class="buttons">
+                                <center><button id="submit" onclick="change_field()">Change</button></center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="change_form"></div> -->
+        </div>
+        <div id="help" class="div-to-hide">
+            <div class="arrow_back" id="left-arrow" onclick="toggleForms(0)">&#8592;</div>
+        </div>
+    </div>
+    <footer class="footerb" >
+        
+        <div class="copyright">&copy; <span id="currentYear">
+ <!-- Left Arrow -->
+        <div class="arrow" id="right-arrow">&#8594;</div>
+        </span> IGA. All rights reserved.</div>
+    </footer>
+  <script>
+    const yearSpan = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+    
+  </script>
+    <script src="../static/javascript/index.js"></script>
+    <script src="../static/javascript/admin.js"></script>
+    <script>
+        Requests()
+    </script>
+</body>
+</html>
